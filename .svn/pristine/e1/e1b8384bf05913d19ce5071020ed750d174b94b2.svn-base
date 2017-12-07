@@ -1,0 +1,5 @@
+package com.ktds.camp.member.vo;
+
+public class MemberVO {
+
+}

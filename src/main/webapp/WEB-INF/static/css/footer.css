@@ -1,0 +1,97 @@
+@charset "UTF-8";
+.div {
+	display: block;
+}
+.ul {
+	margin: 0;
+    padding: 0;
+}
+.bottom-menu {
+	background: #b43f0b;
+	width:100%;
+    padding: 15px 0 55px 0;
+    position:relative;
+}
+.innerbox {
+	position:relative;
+}
+.bottom-menu a {
+	text-decoration: none;
+}
+
+.menuboard {
+	list-style: none;
+}
+
+
+.innerbox {
+	margin: 0 auto;
+    width: 1200px;
+}
+.z {
+	display: block;
+}
+
+.bottom-menu .text {
+	float: left;
+    color: #fff;
+    font-size: 16px;
+}
+.bottomlogo {
+	float: left;
+    padding-top: 55px;
+}
+.bottom-copyarea {
+	float: right;
+    padding-top: 50px;
+}
+.bottom-copyarea .menuboard li{
+	float: left;
+    background: url(/GreatCamping/img/footer/bg_bline.jpg) no-repeat left center;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+.p{
+	list-style-type: none;
+	color: #fff;
+}
+
+.bottom-ground {
+	background: url(/GreatCamping/img/footer/bg_footer.jpg) repeat-x;
+    height: 155px;
+}
+.menuboard li a{
+	font-size: 14px;
+	color: #fff;
+	text-decoration-line: none;
+	
+}
+.bottom-copyarea p{
+	font-size: 12px;
+    color: #fff;
+    margin-top: 10px;
+    text-align: center;
+}
+.menuboard {
+	height: 26px;
+}
+.innerbox > ul{
+	float: right;
+    
+}
+
+.innerbox > ul li{
+	float: left;
+	font-size: 13px;
+    color: #fff;
+    margin-left: 40px;
+    
+}
+
+.innerbox > ul li a {
+	color: #fff;
+	text-align: none;
+}
+
+

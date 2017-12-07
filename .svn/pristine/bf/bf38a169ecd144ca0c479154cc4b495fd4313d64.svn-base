@@ -1,0 +1,155 @@
+package com.ktds.camp.campingPlace.vo;
+
+public class CampingPlaceVO {
+	
+	private int campingPlaceId;
+	private String campingPlaceName;
+	private String fullAdress;
+	private String tellNumber;
+	private String homePageAddress;
+	private String reservationType;
+	private int latitude;
+	private int longitude;
+	private String facilitiesToilet;
+	private String facilitiesShowerRoom;
+	private String facilitiesSink;
+	private String facilitiesStore;
+	private String facilitiesBBQ;
+	private String facilitiesElectric;
+	private String facilitiesWifi;
+	private String facilitiesCaravan;
+	private String facilitiesGlamping;
+	private String facilitiesTent;
+	private String facilitiesPetYN;
+	private int subRegionId;
+	private String area;
+	
+	public int getCampingPlaceId() {
+		return campingPlaceId;
+	}
+	public void setCampingPlaceId(int campingPlaceId) {
+		this.campingPlaceId = campingPlaceId;
+	}
+	public String getCampingPlaceName() {
+		return campingPlaceName;
+	}
+	public void setCampingPlaceName(String campingPlaceName) {
+		this.campingPlaceName = campingPlaceName;
+	}
+	public String getFullAdress() {
+		return fullAdress;
+	}
+	public void setFullAdress(String fullAdress) {
+		this.fullAdress = fullAdress;
+	}
+	public String getTellNumber() {
+		return tellNumber;
+	}
+	public void setTellNumber(String tellNumber) {
+		this.tellNumber = tellNumber;
+	}
+	public String getHomePageAddress() {
+		return homePageAddress;
+	}
+	public void setHomePageAddress(String homePageAddress) {
+		this.homePageAddress = homePageAddress;
+	}
+	public String getReservationType() {
+		return reservationType;
+	}
+	public void setReservationType(String reservationType) {
+		this.reservationType = reservationType;
+	}
+	public int getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(int latitude) {
+		this.latitude = latitude;
+	}
+	public int getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(int longitude) {
+		this.longitude = longitude;
+	}
+	public String getFacilitiesToilet() {
+		return facilitiesToilet;
+	}
+	public void setFacilitiesToilet(String facilitiesToilet) {
+		this.facilitiesToilet = facilitiesToilet;
+	}
+	public String getFacilitiesShowerRoom() {
+		return facilitiesShowerRoom;
+	}
+	public void setFacilitiesShowerRoom(String facilitiesShowerRoom) {
+		this.facilitiesShowerRoom = facilitiesShowerRoom;
+	}
+	public String getFacilitiesSink() {
+		return facilitiesSink;
+	}
+	public void setFacilitiesSink(String facilitiesSink) {
+		this.facilitiesSink = facilitiesSink;
+	}
+	public String getFacilitiesStore() {
+		return facilitiesStore;
+	}
+	public void setFacilitiesStore(String facilitiesStore) {
+		this.facilitiesStore = facilitiesStore;
+	}
+	public String getFacilitiesBBQ() {
+		return facilitiesBBQ;
+	}
+	public void setFacilitiesBBQ(String facilitiesBBQ) {
+		this.facilitiesBBQ = facilitiesBBQ;
+	}
+	public String getFacilitiesElectric() {
+		return facilitiesElectric;
+	}
+	public void setFacilitiesElectric(String facilitiesElectric) {
+		this.facilitiesElectric = facilitiesElectric;
+	}
+	public String getFacilitiesWifi() {
+		return facilitiesWifi;
+	}
+	public void setFacilitiesWifi(String facilitiesWifi) {
+		this.facilitiesWifi = facilitiesWifi;
+	}
+	public String getFacilitiesCaravan() {
+		return facilitiesCaravan;
+	}
+	public void setFacilitiesCaravan(String facilitiesCaravan) {
+		this.facilitiesCaravan = facilitiesCaravan;
+	}
+	public String getFacilitiesGlamping() {
+		return facilitiesGlamping;
+	}
+	public void setFacilitiesGlamping(String facilitiesGlamping) {
+		this.facilitiesGlamping = facilitiesGlamping;
+	}
+	public String getFacilitiesTent() {
+		return facilitiesTent;
+	}
+	public void setFacilitiesTent(String facilitiesTent) {
+		this.facilitiesTent = facilitiesTent;
+	}
+	public String getFacilitiesPetYN() {
+		return facilitiesPetYN;
+	}
+	public void setFacilitiesPetYN(String facilitiesPetYN) {
+		this.facilitiesPetYN = facilitiesPetYN;
+	}
+	public int getSubRegionId() {
+		return subRegionId;
+	}
+	public void setSubRegionId(int subRegionId) {
+		this.subRegionId = subRegionId;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	
+
+}

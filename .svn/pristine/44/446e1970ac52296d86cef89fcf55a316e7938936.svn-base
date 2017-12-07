@@ -1,0 +1,7 @@
+package com.ktds.camp.campingPlace.dao;
+
+public interface CampingPlaceDao {
+	
+	
+
+}

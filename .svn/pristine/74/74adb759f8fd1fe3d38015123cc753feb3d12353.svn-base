@@ -1,0 +1,20 @@
+package com.ktds.camp.notice.service;
+
+import com.ktds.camp.notice.dao.NoticeDao;
+import com.ktds.camp.notice.vo.NoticeVO;
+
+public class NoticeServiceImpl implements NoticeService {
+	
+	private NoticeDao noticeDao;
+
+	public void setNoticeDao(NoticeDao noticeDao) {
+		this.noticeDao = noticeDao;
+	}
+
+	@Override
+	public boolean createNewNotice(NoticeVO noticeVO) {
+		
+		return noticeDao.insertNewNotice(noticeVO) > 0;
+	}
+
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.ktds.camp.menu.vo.MenuVO" alias="MenuVO" />
+		<typeAlias type="com.ktds.camp.member.vo.MemberVO" alias="MemberVO" />
+		<typeAlias type="com.ktds.camp.campingPlace.vo.CampingPlaceVO" alias="CampingPlaceVO" />
+		<typeAlias type="com.ktds.camp.campDetail.vo.CampDetailVO" alias="CampDetailVO" />
+		<typeAlias type="com.ktds.camp.region.vo.RegionVO" alias="RegionVO" />
+		<typeAlias type="com.ktds.camp.qna.vo.QnaVO" alias="QnaVO" />
+		<typeAlias type="com.ktds.camp.guide.vo.GuideVO" alias="GuideVO" />
+		<typeAlias type="com.ktds.camp.guide.vo.CategoryVO" alias="CategoryVO" />
+		<typeAlias type="com.ktds.camp.guide.vo.GuideSearchVO" alias="GuideSearchVO" />
+		<typeAlias type="com.ktds.camp.notice.vo.NoticeVO" alias="NoticeVO" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="paging.xml" />
+		<mapper resource="com/ktds/camp/menu/dao/sql/MenuDao.xml" />
+		<mapper resource="com/ktds/camp/member/dao/sql/memberDao.xml" />
+		<mapper resource="com/ktds/camp/campingPlace/dao/sql/CampingPlaceDao.xml" />
+		<mapper resource="com/ktds/camp/campDetail/dao/sql/campDao.xml" />
+		<mapper resource="com/ktds/camp/region/dao/sql/RegionDao.xml" />
+		<mapper resource="com/ktds/camp/qna/dao/sql/qnaDao.xml" />
+		<mapper resource="com/ktds/camp/guide/dao/sql/guideDao.xml" />
+		<mapper resource="com/ktds/camp/notice/dao/sql/noticeDao.xml" />
+	</mappers>
+</configuration>
+  

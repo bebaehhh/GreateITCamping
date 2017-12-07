@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="SubRegionDao">
+ 	<select id="selectAllRegionCount" resultType="SubRegionVO">
+ 		SELECT	SUB_REGION_ID as subRegionID
+        		, SUB_REGION_NM as subRegionNm
+        		, REGION_ID as regionID
+		FROM SUB_REGION
+		ORDER BY regionID, subRegionNm
+ 	</select>
+ </mapper>

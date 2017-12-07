@@ -1,0 +1,33 @@
+package com.ktds.camp.menu.dao;
+
+import com.ktds.camp.menu.vo.MenuVO;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class MenuDaoImpl extends SqlSessionDaoSupport implements MenuDao{
+
+    @Override
+    public List<MenuVO> selectVisibleMenu() {
+
+        try {
+            return getSqlSession().selectList("MenuDao.selectVisibleMenu");
+        }
+        catch(Exception e) {
+            List<MenuVO> menu = Arrays.asList(
+                    new MenuVO(1, "001", "전국 캠핑장", "0", "", "Y"),
+                    new MenuVO(2, "004", "지역별 캠핑장 목록보기", "001", "?a","Y"),
+                    new MenuVO(2, "005", "예약하기", "001", "?a","Y"),
+                    new MenuVO(1, "002", "고객센터", "0", "","Y"),
+                    new MenuVO(2, "006", "QnA", "002", "?a","Y"),
+                    new MenuVO(2, "007", "FAQ", "002", "?a","Y"),
+                    new MenuVO(2, "008", "공지사항", "002", "?a","Y"),
+                    new MenuVO(1, "003", "마이페이지", "0", "","Y"),
+                    new MenuVO(2, "009", "내 정보", "003", "?a","Y"),
+                    new MenuVO(2, "010", "리뷰관리", "003", "?a","Y")
+            );
+            return menu;
+        }
+    }
+}

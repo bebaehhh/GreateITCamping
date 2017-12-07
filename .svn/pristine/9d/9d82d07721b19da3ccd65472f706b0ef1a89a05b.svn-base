@@ -1,0 +1,19 @@
+package com.ktds.camp.notice.dao;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.ktds.camp.notice.vo.NoticeVO;
+
+public class NoticeDaoImpl extends SqlSessionDaoSupport implements NoticeDao {
+
+	@Override
+	public NoticeVO selectAllNotice() {
+		return getSqlSession().selectOne("NoticeDao.selectAllNotice");
+	}
+
+	/*@Override
+	public int insertNewNotice(NoticeVO noticeVO) {
+		return getSqlSession().insert("NoticeDao.insertNewNotice", noticeVO);
+	}*/
+
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="QnaDao">
+
+	<resultMap type="QnaVO" id="QnaVOMap">
+		<id column="QNA_ID" property="qnaId"/>
+		<result column="QNA_TITLE" property="qnaTitle"/>
+		<result column="QNA_CONTENT" property="qnaContent"/>
+		<result column="QNA_WRITER" property="qnaWriter"/>
+		<result column="QNA_PASSWORD" property="qnaPassword"/>
+		<result column="QNA_SECRET_YN" property="qnaSecretYn"/>
+		<result column="QNA_WRITE_DATE" property="qnaWriteDate"/>
+		<result column="QNA_ANSWER" property="qnaAnswer"/>
+		<result column="QNA_VIEW_COUNT" property="qnaViewCount"/>
+		<result column="M_ID" property="mId"/>
+	</resultMap>
+	
+	<select id="selectAllQnaList" resultMap="QnaVOMap">
+		SELECT	QNA_ID 
+				, QNA_TITLE 
+				, QNA_CONTENT 
+				, QNA_WRITER 
+				, QNA_PASSWORD 
+				, QNA_SECRET_YN 
+				, QNA_WRITE_DATE 
+				, QNA_ANSWER 
+				, QNA_VIEW_COUNT 
+				, M_ID 
+		FROM	QNA
+	</select>
+	
+</mapper>

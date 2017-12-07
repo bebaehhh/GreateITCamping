@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+.campDetailInfo table {
+	border-bottom: 1px solid #d0d0d0;
+	border-top: 1px solid #d0d0d0;
+}
+
+.campDetailInfo table th ,td{
+	font-weight: normal;
+	font-family: dotum;
+	font-size: 10pt;
+	padding: 9px 0px 9px 20px;
+}
+
+.campDetailImg {
+	position: relative;
+	display: inline-block;
+}
+
+.campDetailImg img {
+	width: 500px;
+    height: 370px;
+} 
+
+.campDetailInfo {
+	padding-right: 5%;
+}
+
+.campDetailName {
+	border-top: 2px solid #000;
+	color: #FF3366;
+	line-height: 140%;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 5px;
+}
+
+.campDetailRsvtn {
+	background-color: #FF3366;
+	color: #fff;
+	padding: 3px 12px 3px 12px;
+}
+
+.aaa img{
+	width: 500px;
+	height: 370px;
+	display: inline-block;
+	float: left;
+}

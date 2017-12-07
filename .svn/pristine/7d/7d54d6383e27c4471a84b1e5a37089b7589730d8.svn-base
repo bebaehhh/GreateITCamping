@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="campDetailController" class="com.ktds.camp.campDetail.web.CampDetailController">
+		<property name="campDetailService" ref="campDetailServiceImpl"></property>
+	</bean>
+
+	<bean id="mainController" class="com.ktds.camp.main.web.MainController">
+	</bean>
+
+	<bean id="memberController" class="com.ktds.camp.member.web.MemberController">
+		<property name="memberService" ref="memberServiceImpl" />
+	</bean>
+
+	<bean id="menuController" class="com.ktds.camp.menu.web.MenuController">
+		<property name="menuService" ref="menuServiceImpl" />
+	</bean>
+
+	<bean id="reservationController" class="com.ktds.camp.reservation.web.ReservationController">
+	</bean>
+
+	<bean id="campingPlaceController" class="com.ktds.camp.campingPlace.web.CampingPlaceController">
+		<property name="campingPlaceService" ref="campingPlaceServiceImpl" />
+	</bean>
+
+	<bean id="noticeController" class="com.ktds.camp.notice.web.NoticeController">
+		<property name="noticeService" ref="noticeServiceImpl" />
+	</bean>
+
+	<bean id="qnaController" class="com.ktds.camp.qna.web.QnaController">
+		<property name="qnaService" ref="qnaServiceImpl" />
+	</bean>
+    
+    <bean id="regionController" class="com.ktds.camp.region.web.RegionController" >
+    	<property name="regionService" ref="regionServiceImpl"/>
+    </bean>
+    
+    <bean id="guideController" class="com.ktds.camp.guide.web.GuideController">
+    	<property name="guideService" ref="guideServiceImpl"></property>
+    </bean>
+</beans>

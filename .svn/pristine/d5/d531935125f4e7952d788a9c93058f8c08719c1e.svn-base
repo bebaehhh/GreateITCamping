@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.ktds.camp.menu.vo.MenuVO" alias="MenuVO" />
+		<typeAlias type="com.ktds.camp.member.vo.MemberVO" alias="MemberVO" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/ktds/camp/menu/dao/sql/MenuDao.xml" />
+		<mapper resource="com/ktds/camp/member/dao/sql/memberDao.xml" />
+	</mappers>
+</configuration>
+  

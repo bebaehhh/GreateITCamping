@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+
+* {
+	box-sizing: border-box;
+}
+
+li {
+	list-style:none;
+}
+
+.map {
+	height: 300px;
+}
+
+.contents {
+	border: 1px solid #b2b2b2;
+    height: 392px;
+    border-top: 0;
+}
+
+.area {
+	width: 1200px;
+	vertical-align: center;	
+	margin-bottom: 100px;
+}
+
+.area > .contents > ul {
+	display: block;
+	margin: 0;
+	padding-left: 0;
+	border-bottom: 1px solid #b2b2b2;
+}
+.area > .contents > ul > li {
+	display: inline-block;
+	width: 25%;
+ 	border-top: 1px solid #b2b2b2; 
+	border-right: 1px solid #b2b2b2;
+}
+
+.li-font {
+	color: #1d4140;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.area > .contents > ul > li > button {
+	cursor: pointer;
+	height: 72px;
+	display: inline-block;
+	border: none;
+	width: 100%;
+	background-color: #fff;
+	outline: none;
+}
+
+.partyBtn {
+    background: url(/GreatCamping/img/map/icon_camping_info001.jpg) no-repeat 60px center;
+}
+.tourBtn {
+	background: url(/GreatCamping/img/map/icon_camping_info002.jpg) no-repeat 60px center;
+}
+.foodBtn {
+	background: url(/GreatCamping/img/map/icon_camping_info003.jpg) no-repeat 60px center;
+}
+.shopBtn {
+	background: url(/GreatCamping/img/map/icon_camping_info004.jpg) no-repeat 60px center;
+}
+
+.party-area {
+	display:none;
+}
+.tour-area {
+	display:none;
+}
+.food-area {
+	display:none;
+}
+.shop-area {
+	display:none;
+}
+
+.info-box {
+	padding: 40px 0 0 30px;
+}
+
+.info-box > ul{
+	margin: 0;
+	padding: 0;
+}
+
+.info-box > ul > li {
+	float: left;
+	padding-left: 21px;
+}
+
+.info-box > ul > li:first-child {
+	padding-left: 0px;
+}

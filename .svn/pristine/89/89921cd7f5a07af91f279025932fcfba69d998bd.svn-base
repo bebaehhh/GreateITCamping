@@ -1,0 +1,32 @@
+package com.ktds.camp.campingPlace.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.ktds.camp.campDetail.vo.CampDetailVO;
+import com.ktds.camp.campingPlace.dao.CampingPlaceDao;
+import com.ktds.camp.campingPlace.service.CampingPlaceService;
+import com.ktds.camp.campingPlace.vo.CampingPlaceVO;
+
+
+@Controller
+public class CampingPlaceController {
+	
+	private CampingPlaceService campingPlaceService;
+	
+	public void setCampingPlaceService(CampingPlaceService campingPlaceService) {
+		this.campingPlaceService = campingPlaceService;
+	}
+
+	@RequestMapping("/campingPlace/facilities")
+	public ModelAndView viewFacilitiesPage() {
+		ModelAndView view = new ModelAndView();
+		CampingPlaceVO campingPlaceVO = campingPlaceService.readOneCampingPlace(1);
+		
+		view.addObject("CampingPlaceVO", campingPlaceVO);
+		view.setViewName("campingPlace/campingPlace");
+		
+		return view;
+	}
+}

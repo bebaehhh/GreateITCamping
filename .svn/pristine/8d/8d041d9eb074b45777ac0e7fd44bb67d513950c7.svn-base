@@ -1,0 +1,222 @@
+package com.ktds.camp.campDetail.vo;
+
+public class CampDetailVO {
+
+	private int campingPlaceId;
+	private String cmpPlcNm;
+	private double latitude;
+	private double longitude;
+	private String newFullAddress;
+	private String oldFullAddress;
+	private String telNo;
+	private String hmpgAddress;
+	private double area;
+	private int maximumCapacity;
+	private String useHours;
+	private String charge;
+	private String facToilet;
+	private String facSink;
+	private String facShowerroom;
+	private String facWifi;
+	private String facStore;
+	private String facBbq;
+	private String facElectric;
+	private String facCaravan;
+	private String facGlamping;
+	private String facTent;
+	private String facPet;
+	private int regionId;
+
+	public int getCampingPlaceId() {
+		return campingPlaceId;
+	}
+
+	public void setCampingPlaceId(int campingPlaceId) {
+		this.campingPlaceId = campingPlaceId;
+	}
+
+	public String getCmpPlcNm() {
+		return cmpPlcNm;
+	}
+
+	public void setCmpPlcNm(String cmpPlcNm) {
+		this.cmpPlcNm = cmpPlcNm;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getNewFullAddress() {
+		return newFullAddress;
+	}
+
+	public void setNewFullAddress(String newFullAddress) {
+		this.newFullAddress = newFullAddress;
+	}
+
+	public String getOldFullAddress() {
+		return oldFullAddress;
+	}
+
+	public void setOldFullAddress(String oldFullAddress) {
+		this.oldFullAddress = oldFullAddress;
+	}
+
+	public String getTelNo() {
+		return telNo;
+	}
+
+	public void setTelNo(String telNo) {
+		this.telNo = telNo;
+	}
+
+	public String getHmpgAddress() {
+		return hmpgAddress;
+	}
+
+	public void setHmpgAddress(String hmpgAddress) {
+		this.hmpgAddress = hmpgAddress;
+	}
+
+	public double getArea() {
+		return area;
+	}
+
+	public void setArea(double area) {
+		this.area = area;
+	}
+
+	public int getMaximumCapacity() {
+		return maximumCapacity;
+	}
+
+	public void setMaximumCapacity(int maximumCapacity) {
+		this.maximumCapacity = maximumCapacity;
+	}
+
+	public String getUseHours() {
+		return useHours;
+	}
+
+	public void setUseHours(String useHours) {
+		this.useHours = useHours;
+	}
+
+	public String getCharge() {
+		return charge;
+	}
+
+	public void setCharge(String charge) {
+		this.charge = charge;
+	}
+
+	public String getFacToilet() {
+		return facToilet;
+	}
+
+	public void setFacToilet(String facToilet) {
+		this.facToilet = facToilet;
+	}
+
+	public String getFacSink() {
+		return facSink;
+	}
+
+	public void setFacSink(String facSink) {
+		this.facSink = facSink;
+	}
+
+	public String getFacShowerroom() {
+		return facShowerroom;
+	}
+
+	public void setFacShowerroom(String facShowerroom) {
+		this.facShowerroom = facShowerroom;
+	}
+
+	public String getFacWifi() {
+		return facWifi;
+	}
+
+	public void setFacWifi(String facWifi) {
+		this.facWifi = facWifi;
+	}
+
+	public String getFacStore() {
+		return facStore;
+	}
+
+	public void setFacStore(String facStore) {
+		this.facStore = facStore;
+	}
+
+	public String getFacBbq() {
+		return facBbq;
+	}
+
+	public void setFacBbq(String facBbq) {
+		this.facBbq = facBbq;
+	}
+
+	public String getFacElectric() {
+		return facElectric;
+	}
+
+	public void setFacElectric(String facElectric) {
+		this.facElectric = facElectric;
+	}
+
+	public String getFacCaravan() {
+		return facCaravan;
+	}
+
+	public void setFacCaravan(String facCaravan) {
+		this.facCaravan = facCaravan;
+	}
+
+	public String getFacGlamping() {
+		return facGlamping;
+	}
+
+	public void setFacGlamping(String facGlamping) {
+		this.facGlamping = facGlamping;
+	}
+
+	public String getFacTent() {
+		return facTent;
+	}
+
+	public void setFacTent(String facTent) {
+		this.facTent = facTent;
+	}
+
+	public String getFacPet() {
+		return facPet;
+	}
+
+	public void setFacPet(String facPet) {
+		this.facPet = facPet;
+	}
+
+	public int getRegionId() {
+		return regionId;
+	}
+
+	public void setRegionId(int regionId) {
+		this.regionId = regionId;
+	}
+
+}

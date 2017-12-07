@@ -1,0 +1,466 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath }" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="<c:url value="/css/map-style.css"/>" />
+<script type="text/javascript"
+	src="<c:url value="/js/jquery-3.2.1.min.js" />"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+	crossorigin="anonymous"></script>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+   $().ready(function(){
+      
+      $('.tourBtn').click(function(){
+			$(this).css({'border-bottom': '2px solid #1d4140'});
+			$('.partyBtn').css({'border-bottom' : '0px'});
+			$('.otherBtn').css({'border-bottom' : '0px'});
+      });
+      
+      $('.partyBtn').click(function(){
+	       $(this).css({'border-bottom': '2px solid #1d4140'});
+	       $('.tourBtn').css({'border-bottom' : '0px'});
+	       $('.otherBtn').css({'border-bottom' : '0px'});
+	   });
+      
+      $('.otherBtn').click(function(){
+	       $(this).css({'border-bottom': '2px solid #1d4140'});
+	       $('.tourBtn').css({'border-bottom' : '0px'});
+	       $('.partyBtn').css({'border-bottom' : '0px'});
+    });
+      
+      var click = true;
+      $('.onBtn').click(function(){
+    	  if(click == true){
+    		  $(this).addClass("button-traffic-cl");
+    		  click = false;
+    	  }
+    	  else{
+    		  $('.onBtn').removeClass("button-traffic-cl");
+    		  click = true;
+    	  }
+      });
+      
+   });
+   
+   </script>
+</head>
+<body>
+	<div class="area">
+
+		<div class="map_wrap">
+			<div id="map"
+				style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+			<ul id="category">
+				<li id="BK9" data-order="0"><span class="category_bg bank"></span>은행
+				</li>
+				<li id="MT1" data-order="1"><span class="category_bg mart"></span>마트
+				</li>
+				<li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>약국
+				</li>
+				<li id="OL7" data-order="3"><span class="category_bg oil"></span>주유소
+				</li>
+				<li id="CE7" data-order="4"><span class="category_bg cafe"></span>카페
+				</li>
+				<li id="CS2" data-order="5"><span class="category_bg store"></span>편의점
+				</li>
+			</ul>
+		</div>
+
+		<!--       <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4450ea8765d084e54ea5c4fbac65da9c"></script> -->
+		<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4450ea8765d084e54ea5c4fbac65da9c&libraries=services,clusterer,drawing"></script>
+		<script type="text/javascript">
+         $().ready(function(){
+            // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+            var placeOverlay = new daum.maps.CustomOverlay({zIndex:1}), 
+                contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
+                markers = [], // 마커를 담을 배열입니다
+                markers2 = [], // 마커를 담을 배열입니다
+                currCategory = ''; // 현재 선택된 카테고리를 가지고 있을 변수입니다
+                
+             var drawingFlag = false; // 선이 그려지고 있는 상태를 가지고 있을 변수입니다
+             var moveLine; // 선이 그려지고 있을때 마우스 움직임에 따라 그려질 선 객체 입니다
+             var clickLine // 마우스로 클릭한 좌표로 그려질 선 객체입니다
+             var distanceOverlay; // 선의 거리정보를 표시할 커스텀오버레이 입니다
+             var dots = {}; // 선이 그려지고 있을때 클릭할 때마다 클릭 지점과 거리를 표시하는 커스텀 오버레이 배열입니다.
+            
+            //지도를 화면상에 띄우는 코드입니다.
+            var container = document.getElementById('map'),
+            options = {
+               //지도의 중심이 될 부분 위도와 경도 가져와서 뿌려줌
+                center: new daum.maps.LatLng("${camp.latitude}", "${camp.longitude}"),
+                 level: 4
+            };
+            
+            var map = new daum.maps.Map(container, options);
+            
+            // 마커가 표시될 위치
+            var markerPosition = new daum.maps.LatLng("${camp.latitude}", "${camp.longitude}");
+            
+            // 마커 생성
+            var marker = new daum.maps.Marker ({
+               position: markerPosition
+            });
+            
+            // 마커가 지도위에 표시되도록 설정
+            marker.setMap(map);
+            
+            // 커스텀 오버레이에 표시할 컨텐츠 입니다
+            // 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+            // 별도의 이벤트 메소드를 제공하지 않습니다 
+            
+            var content = '<div class="wrap">' + 
+                        '    <div class="info">' + 
+                        '        <div class="title">' + 
+                        '            ${camp.cmpPlcNm}' + 
+                        '            <div class="close" title="닫기"></div>' + 
+                        '        </div>' + 
+                        '        <div class="body">' + 
+                        '            <div class="img">' +
+                        '                <img src="/GreatCamping/img/map/camping-img.jpg" width="73" height="70">' +
+                        '           </div>' + 
+                        '            <div class="desc">' + 
+                        '                <div class="ellipsis">${camp.newFullAddress}</div>' + 
+                        '                <div class="ellipsis">☎ <span style="color:#898989;">${camp.telNo}</span></div>' + 
+                        '                <div><c:if test="${not empty camp.hmpgAddress}"><a href="${camp.hmpgAddress}" target="_blank" class="link">홈페이지</a></c:if></div>' + 
+                        '            </div>' + 
+                        '        </div>' + 
+                        '    </div>' +    
+                        '</div>';
+                        
+             // 마커 위에 커스텀오버레이를 표시합니다
+             // 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+             var overlay = new daum.maps.CustomOverlay({
+                 content: content,
+                 map: map,
+                 position: new daum.maps.LatLng("${camp.latitude}", "${camp.longitude}")       
+             });
+              
+             // 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+             daum.maps.event.addListener(marker, 'click', function() {
+                 overlay.setMap(map);
+             });
+              
+             // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+                 $(".close").on("click", function() {
+                 overlay.setMap(null);     
+             });               
+            
+            // 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤 생성
+            var mapTypeControl = new daum.maps.MapTypeControl();
+            
+            // 지도에 컨트롤을 추가해야 지도위에 표시됩니다
+            // daum.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOPRIGHT는 오른쪽 위를 의미합니다
+            map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);
+            
+            // 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+            var zoomControl = new daum.maps.ZoomControl();
+            map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
+            
+            // 지도에 표시할 원을 생성합니다
+            var circle = new daum.maps.Circle({
+                 center : new daum.maps.LatLng("${camp.latitude}", "${camp.longitude}"),  // 원의 중심좌표 입니다 
+                 radius: Math.sqrt("${camp.area}"), // 미터 단위의 원의 반지름입니다 
+                 strokeWeight: 5, // 선의 두께입니다 
+                 strokeColor: '#75B8FA', // 선의 색깔입니다
+                 strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                 strokeStyle: 'dashed', // 선의 스타일 입니다
+                 fillColor: '#CFE7FF', // 채우기 색깔입니다
+                 fillOpacity: 0.6  // 채우기 불투명도 입니다   
+            }); 
+
+            // 지도에 원을 표시합니다 
+            circle.setMap(map); 
+              
+            // 카테고리별 장소 
+            // 장소 검색 객체를 생성합니다
+			var ps = new daum.maps.services.Places(map); 
+            
+            // 지도에 idle 이벤트를 등록합니다
+            daum.maps.event.addListener(map, 'idle', searchPlaces);
+            
+            // 커스텀 오버레이의 컨텐츠 노드에 css class를 추가합니다 
+            contentNode.className = 'placeinfo_wrap';
+            
+            // 커스텀 오버레이의 컨텐츠 노드에 mousedown, touchstart 이벤트가 발생했을때
+            // 지도 객체에 이벤트가 전달되지 않도록 이벤트 핸들러로 daum.maps.event.preventMap 메소드를 등록합니다 
+            addEventHandle(contentNode, 'mousedown', daum.maps.event.preventMap);
+            addEventHandle(contentNode, 'touchstart', daum.maps.event.preventMap);
+            
+            // 커스텀 오버레이 컨텐츠를 설정합니다
+            placeOverlay.setContent(contentNode);  
+            
+            // 각 카테고리에 클릭 이벤트를 등록합니다
+            addCategoryClickEvent();
+            
+            // 엘리먼트에 이벤트 핸들러를 등록하는 함수입니다
+            function addEventHandle(target, type, callback) {
+                if (target.addEventListener) {
+                    target.addEventListener(type, callback);
+                } else {
+                    target.attachEvent('on' + type, callback);
+                }
+            }
+            
+            // 카테고리 검색을 요청하는 함수입니다
+            function searchPlaces() {
+                if (!currCategory) {
+                    return;
+                }
+                
+                // 커스텀 오버레이를 숨깁니다 
+                placeOverlay.setMap(null);
+            
+                // 지도에 표시되고 있는 마커를 제거합니다
+                removeMarker();
+                
+                ps.categorySearch(currCategory, placesSearchCB, {useMapBounds:true}); 
+            }
+            
+            // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+            function placesSearchCB(data, status, pagination) {
+                if (status === daum.maps.services.Status.OK) {
+                    // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
+                    displayPlaces(data);
+                } else if (status === daum.maps.services.Status.ZERO_RESULT) {
+                    // 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
+            
+                } else if (status === daum.maps.services.Status.ERROR) {
+                    // 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
+                    
+                }
+            }
+            
+            // 지도에 마커를 표출하는 함수입니다
+            function displayPlaces(places) {
+            
+                // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
+                // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
+                var order = document.getElementById(currCategory).getAttribute('data-order');
+
+                for ( var i=0; i<places.length; i++ ) {
+	                // 마커를 생성하고 지도에 표시합니다
+	                var marker = addMarker(new daum.maps.LatLng(places[i].y, places[i].x), order);
+	    
+	                // 마커와 검색결과 항목을 클릭 했을 때
+	                // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+	                (function(marker, place) {
+	                    daum.maps.event.addListener(marker, 'click', function() {
+	                        displayPlaceInfo(place);
+	                    });
+	                })(marker, places[i]);
+                }
+            }
+            
+            // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+            function addMarker(position, order) {
+                var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+                    imageSize = new daum.maps.Size(27, 28),  // 마커 이미지의 크기
+                    imgOptions =  {
+                        spriteSize : new daum.maps.Size(72, 208), // 스프라이트 이미지의 크기
+                        spriteOrigin : new daum.maps.Point(46, (order*36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+                        offset: new daum.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+                    },
+                    markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+                        marker = new daum.maps.Marker({
+                        position: position, // 마커의 위치
+                        image: markerImage 
+                    });
+            
+                marker.setMap(map); // 지도 위에 마커를 표출합니다
+                markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+            
+                return marker;
+            }
+            
+            // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+            function removeMarker() {
+                for ( var i = 0; i < markers.length; i++ ) {
+                    markers[i].setMap(null);
+                }   
+                markers = [];
+            }
+            
+            // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+            function removeMarker2() {
+                for ( var i = 0; i < markers2.length; i++ ) {
+                    markers2[i].setMap(null);
+                }   
+                markers2 = [];
+            }
+            
+            // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
+            function displayPlaceInfo (place) {
+                var content = '<div class="placeinfo">' +
+                                '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';   
+            
+                if (place.road_address_name) {
+                    content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
+                                '  <span class="jibun" title="' + place.address_name + '">(지번 : ' + place.address_name + ')</span>';
+                }  else {
+                    content += '    <span title="' + place.address_name + '">' + place.address_name + '</span>';
+                }                
+               
+                content += '    <span class="tel">' + place.phone + '</span>' + 
+                            '</div>' + 
+                            '<div class="after"></div>';
+            
+                contentNode.innerHTML = content;
+                placeOverlay.setPosition(new daum.maps.LatLng(place.y, place.x));
+                placeOverlay.setMap(map);  
+            }
+            
+            
+            // 각 카테고리에 클릭 이벤트를 등록합니다
+            function addCategoryClickEvent() {
+                var category = document.getElementById('category'),
+                    children = category.children;
+            
+                for (var i=0; i<children.length; i++) {
+                    children[i].onclick = onClickCategory;
+                }
+            }
+            
+            // 카테고리를 클릭했을 때 호출되는 함수입니다
+            function onClickCategory() {
+                var id = this.id,
+                    className = this.className;
+            
+                placeOverlay.setMap(null);
+            
+                if (className === 'on') {
+                    currCategory = '';
+                    changeCategoryClass();
+                    removeMarker();
+                } else {
+                    currCategory = id;
+                    changeCategoryClass(this);
+                    searchPlaces();
+                }
+            }
+            
+            // 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
+            function changeCategoryClass(el) {
+                var category = document.getElementById('category'),
+                    children = category.children,
+                    i;
+            
+                for ( i=0; i<children.length; i++ ) {
+                    children[i].className = '';
+                }
+            
+                if (el) {
+                    el.className = 'on';
+                } 
+            } 
+              
+            ///////////////////////////////////////////////////
+            var eventTRAFFIC;
+            $(".onBtn").click(function(){
+               eventTRAFFIC = !eventTRAFFIC;
+               // 지도에 교통정보를 표시하도록 지도타입을 추가합니다.
+               if(eventTRAFFIC){
+                   map.addOverlayMapTypeId(daum.maps.MapTypeId.TRAFFIC);
+               }
+               else{
+            	   map.removeOverlayMapTypeId(daum.maps.MapTypeId.TRAFFIC);
+               }
+            });
+            
+            var eventTOUR;
+            $(".tourBtn").click(function() {
+            	eventTOUR = !eventTOUR;
+                // 위치값과 이름을 담을 배열 생성
+                var positions = [];
+                
+            	if (eventTOUR) {
+            		// 관광지 정보를 받아올 ajax
+                    $.post("${path}/camp/traf", {regionId : $(this).attr("data-regionId")}, function(response) {
+                       // List<Map<String, Object>> 타입으로 넘어온 데이터를 배열에 담기
+                       for(var pos of response) {
+                          	var position = {title: pos.CMP_PLC_NM, latlng: new daum.maps.LatLng(pos.LATITUDE, pos.LONGITUDE)};
+                          	positions.push(position);
+                       }
+                       
+                       // 비동기 방식의 json 값을 처리하기 위해 함수에 전달하고 호출
+                       name(positions);
+                    });
+
+                    function name(positions) {
+                       // 마커 이미지의 이미지 주소입니다
+                       var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+                           
+                       for (var i = 0; i < positions.length; i ++) {
+                          // 마커 이미지의 이미지 크기 입니다
+                          var imageSize = new daum.maps.Size(24, 35); 
+                           
+                          // 마커 이미지를 생성합니다    
+                          var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize); 
+                          
+                          // 마커를 생성합니다
+                          var marker2 = new daum.maps.Marker({
+                              map: map, // 마커를 표시할 지도
+                              position: positions[i].latlng, // 마커를 표시할 위치
+                              title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                              image : markerImage // 마커 이미지 
+                          });
+                          
+	                      markers2.push(marker2);  // 배열에 생성된 마커를 추가합니다
+                       }
+                       
+                    }
+				}
+            	else {
+            		removeMarker2();
+            	}
+                  
+            });
+            
+         });
+      </script>
+
+		<div class="contents">
+			<ul>
+				<li>
+					<button class="tourBtn info-btn" data-regionId="${camp.regionId }" type="button">
+						<span class="li-font">캠핑장 찾기</span>
+					</button>
+				</li><!-- 
+             --><li>
+					<button class="partyBtn info-btn" type="button">
+						<span class="li-font">OOO찾기</span>
+					</button>
+				</li><!-- 
+            --><li>
+					<button class="otherBtn info-btn" type="button">
+						<span class="li-font">OOO찾기</span>
+					</button>
+				</li><!-- 
+            --><li style="border-right: 0px;">
+					<button class="onBtn" type="button">
+						<span class="li-font">교통정보 보기</span>
+					</button>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+package com.ktds.camp.menu.web;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.ktds.camp.menu.service.MenuService;
+
+public class MenuInterceptor extends HandlerInterceptorAdapter {
+	
+    private MenuService menuService;
+
+    public void setMenuService(MenuService menuService) {
+        this.menuService = menuService;
+    }
+	
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+			ModelAndView modelAndView) throws Exception {
+		request.setAttribute("menuList", menuService.getVisibleMenu());
+		super.postHandle(request, response, handler, modelAndView);
+	}
+}

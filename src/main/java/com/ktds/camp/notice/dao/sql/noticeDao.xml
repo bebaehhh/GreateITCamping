@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="NoticeDao">
+<!--   	<resultMap type="ChartVO" id="ChartVOMap">
+		<id column="MUSIC_ID" property="musicId" />
+		<result column="MUSIC_SUBJECT" property="musicSubject" />
+		<result column="ALBUM_SUBJECT" property="albumSubject" />
+		<result column="ALBUM_POSTER" property="albumPoster" />
+		<result column="LIKE_COUNT" property="likeCount" />
+		<association property="artistVO" javaType="ArtistVO">
+			<id column="ARTIST_ID" property="artistId" />
+			<result column="ARTIST_NAME" property="artistName" />
+			<result column="NATIONALITY" property="nationality" />
+		</association>
+	</resultMap> -->
+	<resultMap type="NoticeVO" id="NoticeVOMap">
+		<id column="NOTICE_ID" property="noticeId" />
+		<result column="NOTICE_SUBJECT" property="noticeSubject" />
+		<result column="NOTICE_DATE" property="noticeDate" />
+		<result column="NOTICE_VIEWCOUNT" property="noticeViewCount" />
+		<result column="NOTICE_IMPORTANCE" property="noticeImportance" />
+		<result column="NOTICE_CONTENT" property="noticeContent" />
+			<association property="noticeAttachmentVO" javaType="NoticeAttachmentVO">
+				<id column="NA_ID" property="naId" />
+				<result column="NA_NAME" property="naName" />
+			</association>
+	</resultMap>
+  
+  	<select id="selectAllNotice" resultType="NoticeVO">
+		SELECT	NOTICE_ID noticeId
+				,	NOTICE_SUBJECT noticeSubject
+				,	NOTICE_DATE noticeDate
+				,	NOTICE_VIEWCOUNT noticeViewCount
+				,	NOTICE_IMPORTANCE noticeImportance
+				,	NOTICE_CONTENT noticeContent
+		FROM	NOTICE
+		WHERE	NOTICE_ID = 1
+  	</select>
+  	
+  	<select id="selectAllNotice2" resultMap="NoticeVOMap">
+  		SELECT	n.NOTICE_ID 
+				,	NOTICE_SUBJECT
+				,	NOTICE_DATE
+				,	NOTICE_VIEWCOUNT
+				,	NOTICE_IMPORTANCE
+				,	NOTICE_CONTENT
+				,	a.NA_NAME
+		FROM	NOTICE n, NOTICE_ATTACHMENT a
+		WHERE 	n.NOTICE_ID = a.NOTICE_ID
+  	</select>
+  	
+  </mapper>

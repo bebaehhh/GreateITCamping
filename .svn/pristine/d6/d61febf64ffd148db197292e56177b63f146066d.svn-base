@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberDao">
+
+	<insert id="insertNewMember" parameterType="MemberVO">
+		INSERT INTO MEMBER (
+								M_ID		
+								, M_PASSWORD		
+								, M_NAME		
+								, M_NICKNAME		
+								, M_PHONE_NUMBER		
+								, ZONE_CODE
+								, ADDRESS
+								, ADDRESS_DETAIL		
+								, M_EMAIL		
+								, M_AGREEMENT_YN		
+								, M_CREATE_DATE	
+								, M_SALT	
+							)
+		VALUES				(
+								#{memberId}           
+								, #{memberPassword}     
+								, #{memberName}     
+								, #{memberNickName}     
+								, #{memberPhoneNumber}
+								, #{zoneCode}
+								, #{address} 
+								, #{addressDetail}     
+								, #{memberEmail}        
+								, #{memberAggrementYN}  
+								, SYSDATE
+								, #{salt}   
+							)
+	
+	</insert>
+
+</mapper>

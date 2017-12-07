@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="CampDetailDao">
+
+	<select id="selectAllCamp" resultType="Map">
+		SELECT	LATITUDE
+				, LONGITUDE
+		FROM	CAMPING_PLACE_ID_TWO
+	</select>
+	
+	<select id="selectOneCamp" resultType="">
+		SELECT	CAMPING_PLACE_ID
+				, LATITUDE
+				, LONGITUDE
+		FROM	CAMPING_PLACE_ID_TWO
+		WHERE	CAMPING_PLACE_ID = #{value}
+	</select>
+	
+</mapper>

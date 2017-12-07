@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!--  DB 설정 추가.  -->
+	<!--  Datasource 설정 추가 -->
+	<!-- 사용하는거마다다르기때문에 value바꿔야함  localhost도 쓰는곳마다db쓰려면 아이피로변경해야함 -->	
+	<bean id="datasource"
+			class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />			
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />			
+		<property name="username" value="GREAT" />			
+		<property name="password" value="GREAT" />					
+	</bean>
+	
+	<!-- SqlSessionFactory 설정 -->
+	<bean	id="sqlSessionFactory"
+			class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="datasource" />
+		<property name="configLocation" ref="classpath:/mybatis.xml" />
+	</bean>
+	
+	<!-- SqlSessionTemplate 설정 -->
+	<bean	id="sqlSessionTemplate"
+			class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />	
+	</bean>
+	
+	<!-- Transaction 설정 -->
+	<bean	id="transactionManager"
+			class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="datasource" />			
+	</bean>
+	
+	<!-- transaction 대상 메소드 지정 -->
+	<!-- 바뀔일이많이없지만 회사마다다름  -->
+	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="create*" rollback-for="RuntimeException"/>
+			<tx:method name="read*" read-only="true"/>
+			<tx:method name="update*" rollback-for="RuntimeException"/>
+			<tx:method name="delect*" rollback-for="RuntimeException"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- transaction 대상 클래스/메소드 설정 -->
+	<!-- com.ktds..service.*ServiceImpl.*(..) 바뀔수있음.나중에 basepackage가바뀌면 바뀜 -->
+	<aop:config>
+		<aop:pointcut expression="execution(public * com.ktds..service.*ServiceImpl.*(..))" id="servicePointcut"/>
+		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="servicePointcut"/>
+	</aop:config>
+	
+</beans>

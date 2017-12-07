@@ -1,0 +1,87 @@
+package com.ktds.camp.member.vo;
+
+public class MemberVO {
+
+	private String memberId;
+	private String memberPassword;
+	private String memberName;
+	private String memberNickName;
+	private String memberPhoneNumber;
+	private String memberAddress;
+	private String memberEmail;
+	private String memberAggrementYN;
+	private String memberCreateDate;
+
+	public String getMemberId() {
+		return memberId;
+	}
+
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+
+	public String getMemberPassword() {
+		return memberPassword;
+	}
+
+	public void setMemberPassword(String memberPassword) {
+		this.memberPassword = memberPassword;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	public String getMemberNickName() {
+		return memberNickName;
+	}
+
+	public void setMemberNickName(String memberNickName) {
+		this.memberNickName = memberNickName;
+	}
+
+	public String getMemberPhoneNumber() {
+		return memberPhoneNumber;
+	}
+
+	public void setMemberPhoneNumber(String memberPhoneNumber) {
+		this.memberPhoneNumber = memberPhoneNumber;
+	}
+
+	public String getMemberAddress() {
+		return memberAddress;
+	}
+
+	public void setMemberAddress(String memberAddress) {
+		this.memberAddress = memberAddress;
+	}
+
+	public String getMemberEmail() {
+		return memberEmail;
+	}
+
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
+	}
+
+	public String getMemberAggrementYN() {
+		return memberAggrementYN;
+	}
+
+	public void setMemberAggrementYN(String memberAggrementYN) {
+		this.memberAggrementYN = memberAggrementYN;
+	}
+
+	public String getMemberCreateDate() {
+		return memberCreateDate;
+	}
+
+	public void setMemberCreateDate(String memberCreateDate) {
+		this.memberCreateDate = memberCreateDate;
+	}
+
+}

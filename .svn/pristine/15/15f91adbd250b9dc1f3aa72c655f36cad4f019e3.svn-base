@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="MenuDao">
+    <select id="selectVisibleMenu">
+        SELECT  LEVEL
+                , MENU_ID
+                , MENU_NAME
+                , PARENT_MENU_ID
+                , URL
+                , VISIBLE_YN
+        FROM    MENU
+        WHERE   VISIBLE_YN = 'Y'
+        START   WITH PARENT_MENU_ID = '0'
+        CONNECT BY PRIOR MENU_ID = PARENT_MENU_ID
+    </select>
+</mapper>

@@ -1,0 +1,39 @@
+package com.ktds.camp.member.service;
+
+import com.ktds.camp.common.SHA256Util;
+import com.ktds.camp.member.dao.MemberDao;
+import com.ktds.camp.member.vo.MemberVO;
+
+public class MemberServiceImpl implements MemberService {
+	
+	private MemberDao memberDao;
+	
+	public void setMemberDao(MemberDao memberDao) {
+		this.memberDao = memberDao;
+	}
+	
+	@Override
+	public boolean createNewMember(MemberVO memberVO) {
+		// 암호화를 위한 salt 값 생성
+		String salt = SHA256Util.generateSalt();
+		// 비밀번호 암호화 및 vo에 담기
+		memberVO.setMemberPassword(SHA256Util.getEncrypt(memberVO.getMemberPassword(), salt));
+		// salt 값 vo에 담기
+		memberVO.setSalt(salt);
+		
+		return memberDao.insertNewMember(memberVO) > 0;
+	}
+
+	@Override
+	public boolean readCountMemberId(MemberVO memberVO) {
+		return memberDao.selectCountMemberId(memberVO) > 0;
+	}
+
+	@Override
+	public boolean readCountMemberNickname(MemberVO memberVO) {
+		return memberDao.selectCountMemberNickname(memberVO) > 0;
+	}
+
+
+
+}

@@ -1,0 +1,86 @@
+package com.ktds.camp.reservation.vo;
+
+public class ReservationVO {
+	private int rId;
+	private int rPeopleCount;
+	private int rPrice;
+	private boolean rGrillYN;
+	private String rFoodMenu;
+	private String rCheckInDate;
+	private String rCheckOutDate;
+	private String mId;
+	private int campingPlaceId;
+
+	public int getrId() {
+		return rId;
+	}
+
+	public void setrId(int rId) {
+		this.rId = rId;
+	}
+
+	public int getRPeopleCount() {
+		return rPeopleCount;
+	}
+
+	public void setRPeopleCount(int rPeopleCount) {
+		this.rPeopleCount = rPeopleCount;
+	}
+
+	public int getrPrice() {
+		return rPrice;
+	}
+
+	public void setrPrice(int rPrice) {
+		this.rPrice = rPrice;
+	}
+
+	public boolean isrGrillYN() {
+		return rGrillYN;
+	}
+
+	public void setrGrillYN(boolean rGrillYN) {
+		this.rGrillYN = rGrillYN;
+	}
+
+	public String getrFoodMenu() {
+		return rFoodMenu;
+	}
+
+	public void setrFoodMenu(String rFoodMenu) {
+		this.rFoodMenu = rFoodMenu;
+	}
+
+	public String getrCheckInDate() {
+		return rCheckInDate;
+	}
+
+	public void setrCheckInDate(String rCheckInDate) {
+		this.rCheckInDate = rCheckInDate;
+	}
+
+	public String getrCheckOutDate() {
+		return rCheckOutDate;
+	}
+
+	public void setrCheckOutDate(String rCheckOutDate) {
+		this.rCheckOutDate = rCheckOutDate;
+	}
+
+	public String getmId() {
+		return mId;
+	}
+
+	public void setmId(String mId) {
+		this.mId = mId;
+	}
+
+	public int getCampingPlaceId() {
+		return campingPlaceId;
+	}
+
+	public void setCampingPlaceId(int campingPlaceId) {
+		this.campingPlaceId = campingPlaceId;
+	}
+
+}

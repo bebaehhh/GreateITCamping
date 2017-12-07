@@ -1,0 +1,24 @@
+package com.ktds.camp.member.dao;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.ktds.camp.member.vo.MemberVO;
+
+public class MemberDaoImpl extends SqlSessionDaoSupport implements MemberDao {
+
+	@Override
+	public int insertNewMember(MemberVO memberVO) {
+		return getSqlSession().insert("MemberDao.insertNewMember", memberVO);
+	}
+
+	@Override
+	public int selectCountMemberId(MemberVO memberVO) {
+		return getSqlSession().selectOne("MemberDao.selectCountMemberId", memberVO);
+	}
+
+	@Override
+	public int selectCountMemberNickname(MemberVO memberVO) {
+		return getSqlSession().selectOne("MemberDao.selectCountMemberNickname", memberVO);
+	}
+
+}

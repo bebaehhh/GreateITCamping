@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="NoticeDao">
+  	<select id="selectAllNotice" resultType="NoticeVO">
+		SELECT	NOTICE_ID noticeId
+				,	NOTICE_SUBJECT noticeSubject
+				,	NOTICE_DATE noticeDate
+				,	NOTICE_VIEWCOUNT noticeViewCount
+				,	NOTICE_IMPORTANCE noticeImportance
+				,	NOTICE_CONTENT noticeContent
+		FROM	NOTICE
+		WHERE	NOTICE_ID = 1;  	
+  	</select>
+  </mapper>

@@ -1,0 +1,10 @@
+package com.ktds.camp.campDetail.dao;
+
+import java.util.List;
+import java.util.Map;
+
+public interface CampDetailDao {
+	
+	public	List<Map<String, Object>> selectAllCamp();
+
+}

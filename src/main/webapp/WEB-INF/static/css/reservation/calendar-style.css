@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+table {
+  border-collapse: collapse;
+}
+td {
+  height: 200px;
+  vertical-align: top;
+}
+#calendar {
+  overflow: hidden;
+}
+.schedule {
+  background-color: blue;
+  color: white;
+  padding-left: 10px;
+  position: absolute;
+}
+
+
+.wrapper {
+	width: 1050px;
+	margin: 0 auto;
+}        
+.calendarHeader {
+	height:50px;
+	text-align: center;
+	font-size: 20px;
+}
+.calendarHeader div {
+	display: inline-block;
+}
+.calendarHeader div:last-child {
+	float: right;
+}
+.calendarHeader div:last-child input {
+	position: relative;
+	top: 2px;
+}
+.calendarTitle {
+	position: relative;
+	margin-left: 90px;
+}
+.calendarTitle a {
+	position: relative;
+	top: 5px;
+}
+table tr div {
+	text-align: center;
+}
+table tr div:first-child {
+	text-align: left;
+}
+table tr td span:first-child{
+	background-color:orange;
+}

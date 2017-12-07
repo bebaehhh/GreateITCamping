@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.middle-board {
+	width: 1200px;
+    margin: 25px auto 60px auto;
+}
+
+.safe-video {
+	float: left;
+	margin-right: 9px;
+}
+
+img {
+	border: 0 none;
+}
+
+area {
+	display: inline;
+	cursor: pointer;
+}
+
+.guide-box {	
+	float: right;
+}
+a{
+	text-decoration: none;
+}

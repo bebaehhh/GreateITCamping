@@ -1,0 +1,5 @@
+package com.ktds.camp.member.web;
+
+public class MemberController {
+
+}

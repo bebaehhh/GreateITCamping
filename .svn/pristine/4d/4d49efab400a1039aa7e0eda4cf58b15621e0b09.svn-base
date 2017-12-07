@@ -1,0 +1,14 @@
+package com.ktds.camp.member.service;
+
+import com.ktds.camp.member.vo.MemberVO;
+
+public interface MemberService {
+
+	public boolean createNewMember(MemberVO memberVO);
+	
+	public boolean readCountMemberId(MemberVO memberVO);
+	
+	public boolean readCountMemberNickname(MemberVO memberVO);
+	
+	public MemberVO readOneMember(MemberVO memberVO);
+}

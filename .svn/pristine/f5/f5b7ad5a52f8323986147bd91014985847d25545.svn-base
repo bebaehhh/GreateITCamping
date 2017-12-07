@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+*{
+	box-sizing: border-box;
+}
+
+.idpwInfo{
+	overflow: hidden;
+    height: 146px;
+    margin: 0;
+    padding: 60px 0 0 0;
+    border-top: 2px solid #feb500;
+    text-align: center;
+}
+
+.idpwWrapper{
+	margin-top: 80px;
+	margin-left: 500px;
+}
+
+.idSection{
+	overflow: hidden;
+    position: relative;
+    width: 325px;
+    height: 397px;
+    border-bottom: 8px solid #723f03;
+}
+
+.passwordReissue{
+	overflow: hidden;
+    position: relative;
+    width: 325px;
+    height: 397px;
+    border-bottom: 8px solid #723f03;
+    display: inline-block;
+}
+
+.idSearchH3{
+	overflow: hidden;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    line-height: 2;
+    text-align: center;
+    background: #feb500;
+    color: #5b3302;
+}
+
+.passwordReissueH3{
+	overflow: hidden;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    line-height: 2;
+    text-align: center;
+    background: #5b3302;
+    color: #feb500;
+}
+
+.idSection{
+	text-align: center;
+	display: inline-block;
+}
+
+#idpwForm {
+	display: inline-block;
+	margin-right: 38px;
+}
+
+#passwordReissueForm {
+	display: inline-block;
+}
+
+.formWrapper {
+	width: 700px;
+	margin: 0 auto;
+}
+
+.

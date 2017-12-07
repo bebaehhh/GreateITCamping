@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="ReservationDao">
+	
+	<resultMap type="ReservationVO" id="ReservationVOMap">
+		<id column="R_ID" property="rId"/>
+		<result column="R_PEOPLE_COUNT" property="rPeopleCount"/>
+		<result column="R_PRICE" property="rPrice"/>
+		<result column="R_ROOM_NUMBER" property="rRoomNumber"/>
+		<result column="R_GRILL_YN" property="rGrillYN"/>
+		<result column="R_FOOD_PRICE" property="rFoodPrice"/>
+		<result column="R_CHECK_IN" property="rCheckIn"/>
+		<result column="R_CHECK_OUT" property="rCheckOut"/>
+		<result column="R_PERIOD" property="rPeriod"/>
+		<result column="rMemberId" property="memberId"/>
+		
+		<result column="CAMPING_PLACE_ID" property="campingPlaceId"/>
+		
+		<association property="memberVO" javaType="MemberVO">
+			<id column="mMemberId" property="memberId"/>
+			<result column="M_PHONE_NUMBER" property="memberPhoneNumber"/>
+		</association>
+	</resultMap>
+
+	<select id="selectAllReservation" resultMap="ReservationVOMap">
+		SELECT 	R_ID rId
+			   	, R_PEOPLE_COUNT rPeopleCount 
+			   	, R_PRICE rPrice
+			   	, R_ROOM_NUMBER rRoomNumber
+			   	, R_GRILL_YN rGrillYN
+			   	, R_FOOD_PRICE 
+			   	, R_CHECK_IN rCheckIn
+			   	, to_char(to_date(R_CHECK_OUT) + 1, 'yyyy-MM-dd')  rCheckOut
+			   	, R_PERIOD rPeriod
+			   	, R.M_ID rMemberId
+			   	, M.M_ID mMemberId
+			   	, M.M_PHONE_NUMBER memberPhoneNumber
+			   	, CAMPING_PLACE_ID campingPlaceId
+		FROM   	RESERVATION R
+				, MEMBER M
+		WHERE	R.M_ID = M.M_ID
+	</select>
+	
+	<select id="selectOneReservation" resultType="ReservationVO" parameterType="_int">
+	SELECT 	R.R_ID rId
+			   	, R_PEOPLE_COUNT rPeopleCount
+			   	, R_PRICE rPrice
+			   	, R_ROOM_NUMBER rRoomNumber
+			   	, R_GRILL_YN rGrillYN
+			   	, R_FOOD_PRICE rFoodPrice
+			   	, R_CHECK_IN rCheckIn
+			   	, R_CHECK_OUT rCheckOut
+			   	, R_PERIOD rPeriod
+			   	, R.M_ID rMemberId
+			   	, M.M_ID mMemberId
+			   	, M.M_PHONE_NUMBER memberPhoneNumber
+			   	, CAMPING_PLACE_ID campingPlaceId
+		FROM   	RESERVATION R
+                , MEMBER M
+		WHERE	R.M_ID = M.M_ID
+		AND		R.R_ID = #{rId}
+	</select>
+	
+	<insert id="insertReservation" parameterType="_int">
+		INSERT INTO	RESERVATION (
+									R_ID
+									, R_PEOPLE_COUNT
+								   	, R_PRICE
+								   	, R_ROOM_NUMBER
+								   	, R_GRILL_YN
+								   	, R_FOOD_PRICE
+								   	, R_CHECK_IN
+								   	, R_CHECK_OUT
+								   	, R_PERIOD
+								   	, M_ID
+								   	, CAMPING_PLACE_ID
+								)
+		VALUES					(
+									R_ID_SEQ.NEXTVAL
+									, #{rPeopelCount}
+									, #{rPrice}
+									, #{rRoomNumber}
+									, #{rGrillYN}
+									, #{rFoodPrice}
+									, #{rCheckIn}
+									, #{rCheckOut}
+									, #{rPeriod}
+									, #{memberId}
+									, #{campingPlaceId}
+								)
+	</insert>
+	
+	<update id="updateReservation" parameterType="_int">
+		UPDATE	RESERVATION
+		SET		R_PEOPLE_COUNT
+			   	, R_PRICE
+			   	, R_ROOM_NUMBER
+			   	, R_GRILL_YN
+			   	, R_FOOD_PRICE
+			   	, R_CHECK_IN
+			   	, R_CHECK_OUT
+			   	, R_PERIOD
+		WHERE	R_ID = #{rId}
+	</update>
+	
+	<delete id="deleteReservation" parameterType="_int">
+		DELETE FROM	RESERVATION
+		WHERE		R_ID = #{rId}
+	</delete>
+
+</mapper>

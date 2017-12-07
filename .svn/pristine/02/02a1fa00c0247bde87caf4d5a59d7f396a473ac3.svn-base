@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="CampingPlaceDao">
+  
+  <select id="selectOneCampingPlace" resultType="CampingPlaceVO">
+		SELECT	CAMPING_PLACE_ID 
+				,	CMP_PLC_NM  
+				<!-- ,	FULL_ADDRESS
+				,	TEL_NO
+				,	HMPG_ADDRESS
+				,	RSVTN_TYPE
+				,	LATITUDE
+				,	LONGITUDE
+				,	FAC_TOILET
+				,	FAC_SHOWERROOM
+				,	FAC_SINK
+				,	FAC_STORE
+				,	FAC_BBQ
+				,	FAC_ELECTRIC
+				,	FAC_WIFI
+				,	FAC_CARAVAN
+				,	FAC_GLAMPING
+				,	FAC_TENT
+				,	FAC_PET_YN
+				,	SUB_REGION_ID
+				,	AREA -->
+		FROM	CAMPING_PLACE
+		WHERE	CAMPING_PLACE_ID = 1
+	</select>
+  </mapper>

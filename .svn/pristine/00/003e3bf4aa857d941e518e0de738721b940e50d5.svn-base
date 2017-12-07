@@ -1,0 +1,9 @@
+package com.ktds.camp.notice.dao;
+
+import com.ktds.camp.notice.vo.NoticeVO;
+
+public interface NoticeDao {
+	
+	public int insertNewNotice(NoticeVO noticeVO);
+
+}

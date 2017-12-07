@@ -1,0 +1,30 @@
+package com.ktds.camp.campDetail.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+import com.ktds.camp.campDetail.vo.CampDetailImageReadVO;
+import com.ktds.camp.campDetail.vo.CampDetailVO;
+
+public class CampDetailDaoImpl extends SqlSessionDaoSupport implements CampDetailDao{
+
+	@Override
+	public List<Map<String, Object>> selectAllCampMap(int regionId) {
+	
+		return getSqlSession().selectList("CampDetailDao.selectAllCampMap", regionId);
+	}
+
+	@Override
+	public CampDetailVO selectOneCampMap(int campingPlaceId) {
+		return getSqlSession().selectOne("CampDetailDao.selectOneCampMap", campingPlaceId); 
+	}
+
+	@Override
+	public List<CampDetailImageReadVO> selectListImage(int campingPlaceId) {
+		return getSqlSession().selectList("CampDetailDao.selectListImage", campingPlaceId);
+	}
+
+	
+}

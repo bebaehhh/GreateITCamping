@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="CampDetailDao">
+
+	<select id="selectAllCampMap" resultType="Map" parameterType="_int">
+		SELECT	CAMPING_PLACE_ID
+				, CMP_PLC_NM
+				, LATITUDE
+				, LONGITUDE
+				, NEW_FULL_ADDRESS
+				, OLD_FULL_ADDRESS
+				, TEL_NO
+				, HMPG_ADDRESS
+				, AREA
+				, MAXIMUM_CAPACITY
+				, USE_HOURS
+				, CHARGE
+				, FAC_TOILET
+				, FAC_SINK
+				, FAC_SHOWERROOM
+				, FAC_WIFI
+				, FAC_STORE 
+				, FAC_BBQ 
+				, FAC_ELECTRIC 
+				, FAC_CARAVAN 
+				, FAC_GLAMPING 
+				, FAC_TENT 
+				, FAC_PET 
+				, REGION_ID 
+				, SUB_REGION_ID
+		FROM	CAMPING_PLACE
+		WHERE	REGION_ID = #{value}
+	</select>
+	
+	<select id="selectOneCampMap" resultType="CampDetailVO" parameterType="_int">
+		SELECT	CAMPING_PLACE_ID campingPlaceId
+				, CMP_PLC_NM cmpPlcNm	
+				, LATITUDE latitude
+				, LONGITUDE longitude
+				, NEW_FULL_ADDRESS newFullAddress
+				, OLD_FULL_ADDRESS oldFullAddress
+				, TEL_NO telNo
+				, HMPG_ADDRESS hmpgAddress
+				, AREA area
+				, MAXIMUM_CAPACITY maximumCapacity
+				, USE_HOURS useHours
+				, CHARGE charge
+				, FAC_TOILET facToilet
+				, FAC_SINK facSink
+				, FAC_SHOWERROOM facShowerroom
+				, FAC_WIFI facWifi
+				, FAC_STORE facStore
+				, FAC_BBQ facBbq
+				, FAC_ELECTRIC facElectric
+				, FAC_CARAVAN facCaravan
+				, FAC_GLAMPING facGlamping
+				, FAC_TENT facTent
+				, FAC_PET facPet
+				, REGION_ID regionId
+				, SUB_REGION_ID subRegionId
+		FROM	CAMPING_PLACE
+		WHERE	CAMPING_PLACE_ID = #{value}
+	</select>
+	
+</mapper>

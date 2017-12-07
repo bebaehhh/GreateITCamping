@@ -1,0 +1,5 @@
+package com.ktds.camp.campingPlace.dao;
+
+public class CampingPlaceDaoImpl {
+
+}

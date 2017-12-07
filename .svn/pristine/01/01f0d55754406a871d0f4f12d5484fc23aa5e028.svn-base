@@ -1,0 +1,14 @@
+package com.ktds.camp.notice.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class NoticeController {
+	
+	@RequestMapping("/notice/noticeWrite")
+	public String writeNoticePage( ) {
+		return "notice/noticeWrite";
+	}
+
+}

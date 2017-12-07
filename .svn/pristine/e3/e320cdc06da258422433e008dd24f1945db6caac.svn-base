@@ -1,0 +1,5 @@
+package com.ktds.camp.reservation.dao;
+
+public class ReservationDaoImpl implements ReservationDao{
+	
+}

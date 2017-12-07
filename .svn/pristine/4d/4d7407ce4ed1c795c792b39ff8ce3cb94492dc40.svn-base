@@ -1,0 +1,11 @@
+package com.ktds.camp.reservation.service;
+
+import com.ktds.camp.reservation.dao.ReservationDao;
+
+public class ReservationServiceImpl implements ReservationService{
+	private ReservationDao reservationDao;
+	
+	public void setReservationDao(ReservationDao reservationDao) {
+		this.reservationDao = reservationDao;
+	}
+}

@@ -1,0 +1,29 @@
+package com.ktds.camp.campDetail.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ktds.camp.campDetail.service.CampDetailService;
+
+@Controller
+public class CampDetailController {
+	
+	private CampDetailService campDetailService;
+	
+	public void setCampDetailService(CampDetailService campDetailService) {
+		this.campDetailService = campDetailService;
+	}
+
+	@RequestMapping("/campDetailMain")
+	public String CampDetailMainPage() {
+		return "camp/campDetail/campDetailMain";
+	}
+	
+	@RequestMapping("/map")
+	public String MapPage() {
+		return "camp/map/map";
+	}
+	
+	
+	
+}

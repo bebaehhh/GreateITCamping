@@ -1,0 +1,6 @@
+package com.ktds.camp.campDetail.dao;
+
+public class CampDetailDaoImpl implements CampDetailDao{
+
+	
+}

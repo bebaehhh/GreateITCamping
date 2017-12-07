@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+
+* {
+	box-sizing: border-box;
+}
+
+li {
+	list-style:none;
+}
+
+.map-area {
+	height: 400px;
+}
+
+.contents {
+	border: 1px solid #b2b2b2;
+    height: 392px;
+    border-top: 0;
+}
+
+.area {
+	width: 1200px;
+	vertical-align: center;	
+	margin-bottom: 100px;
+}
+
+.area > .contents > ul {
+	display: block;
+	margin: 0;
+	padding-left: 0;
+	border-bottom: 1px solid #b2b2b2;
+	border-top: 1px solid #b2b2b2;
+}
+.area > .contents > ul > li {
+	display: inline-block;
+	width: 25%;
+	border-right: 1px solid #b2b2b2;
+}
+
+.li-font {
+	color: #1d4140;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.area > .contents > ul > li > button {
+	cursor: pointer;
+	height: 72px;
+	display: inline-block;
+	border: none;
+	width: 100%;
+	background-color: #fff;
+	outline: none;
+}
+
+.partyBtn {
+    background: url(/GreatCamping/img/map/icon_camping_info001.jpg) no-repeat 60px center;
+}
+.tourBtn {
+	background: url(/GreatCamping/img/map/icon_camping_info002.jpg) no-repeat 60px center;
+}
+
+.party-area {
+	display:none;
+}
+.tour-area {
+	display:none;
+}
+.food-area {
+	display:none;
+}
+.shop-area {
+	display:none;
+}
+
+.info-box {
+	padding: 40px 0 0 30px;
+}
+
+.info-box > ul{
+	margin: 0;
+	padding: 0;
+}
+
+.info-box > ul > li {
+	float: left;
+	padding-left: 21px;
+}
+
+.info-box > ul > li:first-child {
+	padding-left: 0px;
+}
+
+.button-traffic-cl {
+	border:1px solid #ffc826; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+	background-color: #ffd65e; background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd65e), to(#febf04));
+	background-image: -webkit-linear-gradient(top, #ffd65e, #febf04);
+	background-image: -moz-linear-gradient(top, #ffd65e, #febf04);
+	background-image: -ms-linear-gradient(top, #ffd65e, #febf04);
+	background-image: -o-linear-gradient(top, #ffd65e, #febf04);
+	background-image: linear-gradient(to bottom, #ffd65e, #febf04);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#ffd65e, endColorstr=#febf04);
+}

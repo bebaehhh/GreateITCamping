@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberDao">
+
+	<insert id="insertNewMember" parameterType="MemberVO">
+		INSERT INTO MEMBER (
+								M_ID		
+								, M_PASSWORD		
+								, M_NAME		
+								, M_NICKNAME		
+								, M_PHONE_NUMBER		
+								, ZONE_CODE
+								, ADDRESS
+								, ADDRESS_DETAIL		
+								, M_EMAIL		
+								, M_AGREEMENT_YN		
+								, M_CREATE_DATE	
+								, SALT	
+							)
+		VALUES				(
+								#{memberId}           
+								, #{memberPassword}     
+								, #{memberName}     
+								, #{memberNickName}      
+								, #{memberPhoneNumber}
+								, #{zoneCode}
+								, #{address} 
+								, #{addressDetail}     
+								, #{memberEmail}        
+								, #{memberAggrementYN}  
+								, SYSDATE
+								, #{salt}   
+							)
+	
+	</insert>
+	
+	<select id="selectCountMember" parameterType="MemberVO" resultType="_int">
+		SELECT	COUNT(*)
+		FROM	MEMBER
+		WHERE	1=1
+		<if test="memberId != null and memberId != ''">
+			AND		M_ID = #{memberId}	
+		</if>	
+		<if test="memberNickName != null and memberNickName != ''">
+			AND		M_NICKNAME = #{memberNickName}
+		</if>
+		<if test="memberEmail != null and memberEmail != ''">
+			AND		M_EMAIL = #{memberEmail}
+		</if>	
+	</select>
+	
+	<select id="selectOneMember" parameterType="MemberVO" resultType="MemberVO">
+		SELECT	M_ID memberId		
+				, M_PASSWORD memberPassword		
+				, M_NAME memberName		
+				, M_NICKNAME memberNickName		
+				, M_PHONE_NUMBER memberPhoneNumber		
+				, ZONE_CODE zoneCode
+				, ADDRESS
+				, ADDRESS_DETAIL addressDetail	
+				, M_EMAIL memberEmail	
+				, M_AGREEMENT_YN memberAggrementYN		
+				, M_CREATE_DATE memberCreateDate
+				, SALT
+		FROM	MEMBER
+		WHERE	M_ID = #{memberId}
+	</select>
+	
+
+</mapper>

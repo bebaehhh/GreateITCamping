@@ -1,0 +1,29 @@
+package com.ktds.camp.qna.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.ktds.camp.qna.service.QnaService;
+
+@Controller
+public class QnaController {
+	
+	private QnaService qnaService;
+
+	public void setQnaService(QnaService qnaService) {
+		this.qnaService = qnaService;
+	}
+	
+	@RequestMapping("/qnaList")
+	public ModelAndView qnaList() {
+		
+		ModelAndView view = new ModelAndView();
+		view.setViewName("qna/qnaList");
+		view.addObject("qna", qnaService.readAllQnaList());
+		
+		return view;
+	}
+	
+
+}

@@ -1,0 +1,13 @@
+package com.ktds.camp.campingPlace.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class CampingPlaceController {
+	
+	@RequestMapping("/campingPlace/facilities")
+	public String viewFacilitiesPage() {
+		return "campingPlace/campingPlace";
+	}
+}

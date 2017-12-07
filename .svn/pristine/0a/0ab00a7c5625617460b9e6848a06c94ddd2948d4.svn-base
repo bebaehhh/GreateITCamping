@@ -1,0 +1,10 @@
+package com.ktds.camp.campingPlace.service;
+
+
+import com.ktds.camp.campingPlace.vo.CampingPlaceVO;
+
+
+public interface CampingPlaceService {
+	public CampingPlaceVO readOneCampingPlace(int campingPlaceId);
+
+}

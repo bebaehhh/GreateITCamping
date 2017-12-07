@@ -1,0 +1,138 @@
+@charset "UTF-8";
+* {
+	box-sizing: border-box;
+	font-family: dotum;
+	font-size: 1.5rem;
+}
+
+.SignUpWrapper {
+	width: 805px;
+}
+
+
+
+
+
+.signUPTitle{
+	height: 45px;
+    margin: 0;
+    padding: 0 0 0 30px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 3;
+    color: #723f03;
+    background: #feb500;
+    margin-bottom: 50px;
+    
+}
+
+.inputForm {
+	list-style: none;
+	display: block;
+	margin-left: 40px;
+}
+
+.inputForm>li {
+	border-top: 1px solid #e9e2d7;
+	padding: 10px 0;
+	font-weight: 700;
+}
+
+.inputForm > li:last-child {
+	border-bottom: 1px solid #e9e2d7;	
+}
+
+button, input, textarea {
+    margin: 0;
+    outline: none;
+    color: #444;
+}
+
+input[type='text'], input[type='password'] {
+	width: 190px;
+	height: 25px;
+    border: 1px solid #d6cdcd;
+    padding: 4px 3px;
+    text-indent: 3px;
+}
+
+.inputForm>li label {
+	display: inline-block;
+	width: 93px;
+	
+	
+}
+
+.addressSearch{
+	display: inline-block;	
+}
+
+#address, #addressDetail {
+	margin-top: 10px;
+	width: 300px;
+}
+label[for='addressName'] {
+	vertical-align: top;
+}
+
+
+.privacy-agree {
+	margin-top: 50px;
+}
+
+.privacy-agree h2 {
+	font-size: 2rem;
+    font-weight: 700;
+}
+
+.privacy-agree > h2 {
+	margin: 0;
+    padding: 0 0 10px 30px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.privacy-agree > .cont {
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 120px;
+    margin: 0;
+    padding: 30px 30px 30px 30px;
+    border: 1px solid #ebebeb;
+    border-width: 1px 1px 0 1px;
+    
+}
+
+.agreeCheck {
+	margin: 0;
+    padding: 10px 30px;
+    background-color: #efe9e9;
+    
+}
+
+input[type='checkbox'] {
+	vertical-align: middle;
+}
+
+.signUpinfo {
+	
+	font-weight: 700;
+	text-align: center;
+}
+
+#signUpbutton {
+	display: block;
+	margin: 0 auto;
+}
+
+input[type='button'], input[type='submit'] {
+	margin-left: 10px;
+	padding: 6px 12px;
+	border: 0;
+	vertical-align: middle;
+	background-color: #ff6600;
+	color: #fff;
+	cursor: pointer;
+	font-weight: 700;
+}
+    

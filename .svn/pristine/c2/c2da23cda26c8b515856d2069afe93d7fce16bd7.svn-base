@@ -1,0 +1,103 @@
+package com.ktds.camp.guide.web;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.ktds.camp.guide.service.GuideService;
+import com.ktds.camp.guide.vo.CategoryVO;
+import com.ktds.camp.guide.vo.GuideSearchVO;
+
+
+import io.github.seccoding.web.pager.explorer.PageExplorer;
+import io.github.seccoding.web.pager.explorer.PageOption;
+
+
+@Controller
+public class GuideController {
+	
+	private GuideService guideService;
+	
+	public void setGuideService(GuideService guideService) {
+		this.guideService = guideService;
+	}
+	
+	@RequestMapping("/camp/guide/guide/{guideNumber}")
+	public ModelAndView viewGuidePage(GuideSearchVO guideSearchVO, @PathVariable int guideNumber) {
+		System.out.println("11111111111111111111111");
+		List<CategoryVO> categoryList = guideService.readAllCategory();
+		PageExplorer pageExplorer = guideService.readAllGuide(guideSearchVO);
+		
+		 int totalCount = pageExplorer.getTotalCount();
+	     System.out.println("전체 번호 : " + totalCount);
+	     
+		guideSearchVO.setGuideNumber(guideNumber);
+		
+		PageOption option = new PageOption()
+	                .formId("pageForm")
+	                .link("pageNo")
+	                .prev("이전")
+	                .next("다음")
+	                .pageFormat("[@]");
+
+		 String pageNavi = pageExplorer.setData(option)
+				// 이전 버튼
+					.prevGroup((prevGroupPageNumber, prev) -> {
+						return "<a style=width:20px; margin=0px; onclick=\"movePage('" + prevGroupPageNumber + "')\">" + prev + "</a>";
+					})
+				
+					// 다음 버튼
+					.nextGroup((nextGroupPageNumber, next) -> {
+						return "<a style=width:20px; margin=0px; onclick=\"movePage('" + nextGroupPageNumber + "')\">" + next + "</a>";
+					})
+					// 페이지 버튼
+					.pages((pageNo, pageFormat) -> {
+						return "<a style=width:20px; margin=0px; onclick=\"movePage('" + pageNo + "')\">" + pageFormat + "</a>";
+					})
+					.make();
+		 
+		 //System.out.print("///////////////////" + pageNavi);
+		 
+		ModelAndView view = new ModelAndView();
+		
+		view.setViewName("camp/guide/guide");
+		
+		
+		view.addObject("guideSearchVO",guideSearchVO);
+		view.addObject("pageNavi",pageNavi);
+		view.addObject("pageNum", guideNumber);
+		view.addObject("categoryList", categoryList);
+		view.addObject("guideList", guideService.readAllGuide(guideSearchVO));
+		
+		return view;
+		
+	}
+//	@RequestMapping("/camp/guide/guide")
+//	public ModelAndView viewGuidePage() {
+//		
+//		List<CategoryVO> categoryList = guideService.readAllCategory();
+//		
+////		categoryList.stream().forEach(System.out::println);
+//		
+//		ModelAndView view = new ModelAndView();
+//		
+//		view.setViewName("camp/guide/guide");
+//		view.addObject("categoryList", categoryList);
+//		
+//		
+//		return view;
+//	}
+//	
+	
+	
+	
+	
+	
+	
+	
+	
+
+}
