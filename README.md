@@ -1,2 +1,2 @@
 # GreateITCamping
-kt ds university rast project
+kt ds university final project
